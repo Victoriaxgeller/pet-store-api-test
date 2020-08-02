@@ -21,14 +21,14 @@ public class PetActions {
                         "application/json")
                 .accept(ContentType.JSON)
                 .body(pet)
-        .when()
+                .when()
                 .post("/pet")
-        .then()
+                .then()
                 .statusCode(200).log().all();
     }
 
     @Step
-    public void getPetById(int id) {
+    public void getPetById(int id, int statusCode) {
         RestAssured.baseURI = "https://petstore.swagger.io/v2";
         given()
                 .contentType(ContentType.JSON)
@@ -36,9 +36,9 @@ public class PetActions {
                         "application/json")
                 .accept(ContentType.JSON)
                 .when()
-                .get("/pet/"+id)
+                .get("/pet/" + id)
                 .then()
-                .statusCode(200).log().all();
+                .statusCode(statusCode).log().all();
     }
 
     @Step
@@ -50,7 +50,7 @@ public class PetActions {
                         "application/json")
                 .accept(ContentType.JSON)
                 .when()
-                .delete("/pet/"+id)
+                .delete("/pet/" + id)
                 .then()
                 .statusCode(200).log().all();
     }

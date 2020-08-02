@@ -21,6 +21,6 @@ public class CreatePetStepsDefinition {
 
     @Then("I send GET request to check pet is added")
     public void i_send_GET_request_to_check_pet_is_added() {
-       petActions.getPetById(123);
+       petActions.getPetById(123, 200);
     }
 }
