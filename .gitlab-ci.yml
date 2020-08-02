@@ -1,0 +1,16 @@
+default:
+  image: maven:3.6.3-openjdk-11
+cache:
+  paths:
+    - .m2/repository
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+pet_tests:
+  script:
+    - mvn test -fn
+    - mvn serenity:aggregate
+  artifacts:
+    paths:
+      - target/site/serenity/
+    reports:
+      junit: target/reports/junit-reports/report.xml
