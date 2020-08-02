@@ -9,7 +9,6 @@ pet_tests:
   script:
     - mvn test -fn
     - mvn serenity:aggregate
-    when: manual
   artifacts:
     paths:
       - target/site/serenity/
